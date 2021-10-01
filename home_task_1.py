@@ -80,7 +80,7 @@ class colorizer:
         self.colour = colour
 
     def __enter__(self):
-        print(f'\033[{colors[self.colour]}m')
+        print(f'\033[{colors[self.colour]}m', end='')
 
     def __exit__(self, exc_type, exc_value, tb):
         print('\033[0m', end='')
@@ -131,7 +131,7 @@ print(f'Triangle square: {t.square()}')
 with colorizer('red'):
     print('printed in red')
 
-print('printed in default color\n')
+print('printed in default color')
 
 # Fifth assignment tests
 assert(list(frange(5)) == [0, 1, 2, 3, 4])
