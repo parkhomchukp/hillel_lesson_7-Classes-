@@ -75,16 +75,19 @@ class Triangle(Shape):
         )
 
 
-# point = Point(1, 5)
-# circle = Circle(0, 0, 10)
-# result = circle.contains(point)
-# print(result)
-#
-# p = Parallelogram(0, 0, 5, 6, 60)
-# print(f'Parallelogram square: {p.square()}')
-#
-# t = Triangle(0, 0, 10, 15, 8, 90)
-# print(f'Triangle square: {t.square()}')
+class colorizer:
+    def __init__(self, colour):
+        self.colour = colour
+
+    def __enter__(self):
+        print(f'\033[{colors[self.colour]}m', end='')
+
+    def __exit__(self, exc_type, exc_value, tb):
+        print('\033[0m', end='')
+        if exc_type is not None:
+            traceback.print_exception(exc_type, exc_value, tb)
+            return False
+        return True
 
 
 class frange:
@@ -111,6 +114,26 @@ class frange:
                 i += self.step
 
 
+# First assignment test
+point = Point(1, 5)
+circle = Circle(0, 0, 10)
+print(f'Circle contains point: {circle.contains(point)}')
+
+# Second assignment test
+p = Parallelogram(0, 0, 5, 6, 60)
+print(f'Parallelogram square: {p.square()}')
+
+# Third assignment test
+t = Triangle(0, 0, 10, 15, 8, 90)
+print(f'Triangle square: {t.square()}')
+
+# Fourth assignment test
+with colorizer('red'):
+    print('printed in red')
+
+print('printed in default color')
+
+# Fifth assignment tests
 assert(list(frange(5)) == [0, 1, 2, 3, 4])
 assert(list(frange(2, 5)) == [2, 3, 4])
 assert(list(frange(2, 10, 2)) == [2, 4, 6, 8])
@@ -122,33 +145,3 @@ assert(list(frange(0, 0)) == [])
 assert(list(frange(100, 0)) == [])
 
 print('SUCCESS!')
-
-# for i in frange(1, 100, 3.5):
-#     print(i)
-
-# print('\033[93m', end='')
-# print('aaa')
-# print('bbb')
-# print('\033[0m', end='')
-# print('ccc')
-
-
-class colorizer:
-    def __init__(self, colour):
-        self.colour = colour
-
-    def __enter__(self):
-        print(f'\033[{colors[self.colour]}m')
-
-    def __exit__(self, exc_type, exc_value, tb):
-        print('\033[0m', end='')
-        if exc_type is not None:
-            traceback.print_exception(exc_type, exc_value, tb)
-            return False
-        return True
-
-
-with colorizer('red'):
-    print('printed in red')
-
-print('printed in default color')
