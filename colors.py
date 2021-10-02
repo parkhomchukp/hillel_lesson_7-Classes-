@@ -5,5 +5,6 @@ colors = {
     'yellow': '93',
     'blue': '94',
     'pink': '95',
-    'turquoise': '96'
+    'turquoise': '96',
+    'reset': '0'
 }

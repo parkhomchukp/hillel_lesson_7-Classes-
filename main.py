@@ -83,7 +83,7 @@ class colorizer:
         print(f'\033[{colors[self.colour]}m', end='')
 
     def __exit__(self, exc_type, exc_value, tb):
-        print('\033[0m', end='')
+        print(f'\033[{colors["reset"]}m', end='')
         if exc_type is not None:
             traceback.print_exception(exc_type, exc_value, tb)
             return False
